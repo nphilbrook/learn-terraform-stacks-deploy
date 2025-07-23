@@ -32,7 +32,7 @@ deployment "test" {
   }
 }
 
-publish_output "lambda_urls" {
+publish_output "dev_lambda_url" {
   description = "URLs to invoke lambda functions"
-  value = deployment.development.lambda_urls["us-east-1"]
+  value = deployment.development.lambda_urls[0]
 }
