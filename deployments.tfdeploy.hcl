@@ -31,3 +31,8 @@ deployment "test" {
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
   }
 }
+
+publish_output "lambda_urls" {
+  description = "URLs to invoke lambda functions"
+  value = deployment.development.lambda_urls["us-east-1"]
+}
