@@ -32,7 +32,24 @@ identity_token "aws" {
 #   }
 # }
 
-publish_output "dev_lambda_url" {
-  description = "URLs to invoke lambda functions"
-  value = deployment.development.lambda_urls[0]
+
+upstream_input "aws_packer_compute" {
+  type   = "stack"
+  source = "app.terraform.io/philbrook/aws-packer-compute/aws-packer-compute"
+}
+
+publish_output "dev_packer_instance_profile_role_arn" {
+  value = upstream_input.aws_packer_compute.dev_packer_instance_profile_role_arn
+}
+
+publish_output "dev_packer_public_dns" {
+  value = upstream_input.aws_packer_compute.dev_packer_public_dns
+}
+
+publish_output "prod_packer_instance_profile_role_arn" {
+  value = upstream_input.aws_packer_compute.prod_packer_instance_profile_role_arn
+}
+
+publish_output "prod_packer_public_dns" {
+  value = upstream_input.aws_packer_compute.prod_packer_public_dns
 }
