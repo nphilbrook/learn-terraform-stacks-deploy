@@ -4,3 +4,7 @@
 variable "bucket_id" {
   type = string
 }
+
+variable "foo" {
+  type = string
+}

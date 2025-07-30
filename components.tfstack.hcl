@@ -24,7 +24,8 @@ component "lambda" {
   inputs = {
     region    = var.regions
     bucket_id = component.s3[each.value].bucket_id
-  }
+     foo     = var.foo
+ }
 
   providers = {
     aws     = provider.aws.configurations[each.value]
