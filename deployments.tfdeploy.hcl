@@ -8,7 +8,7 @@ identity_token "aws" {
 deployment "development" {
   inputs = {
     regions        = ["us-east-1"]
-    role_arn       = "arn:aws:iam::590184029125:role/tf-philbrook-example-app-2"
+    role_arn       = "arn:aws:iam::590184029125:role/tfc-philbrook-role"
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
     foo            = upstream_input.aws_packer_compute.dev_packer_instance_profile_role_arn
