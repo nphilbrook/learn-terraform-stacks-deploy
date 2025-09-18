@@ -5,13 +5,18 @@ identity_token "aws" {
   audience = ["aws.workload.identity"]
 }
 
+upstream_input "aws_packer_compute" {
+  type   = "stack"
+  source = "app.terraform.io/philbrook/aws-packer-compute/aws-packer-compute"
+}
+
 deployment "development" {
   inputs = {
-    regions        = ["us-east-1"]
-    role_arn       = "arn:aws:iam::590184029125:role/tfc-philbrook-role"
-    identity_token = identity_token.aws.jwt
-    default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
-    foo            = upstream_input.aws_packer_compute.dev_packer_instance_profile_role_arn[0]
+    regions          = ["us-east-1"]
+    role_arn         = "arn:aws:iam::590184029125:role/tfc-philbrook-role"
+    identity_token   = identity_token.aws.jwt
+    default_tags     = { stacks-preview-example = "lambda-component-expansion-stack" }
+    public_dns_names = upstream_input.aws_packer_compute.dev_packer_public_dns
   }
 }
 
@@ -32,25 +37,3 @@ deployment "development" {
 #     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
 #   }
 # }
-
-
-upstream_input "aws_packer_compute" {
-  type   = "stack"
-  source = "app.terraform.io/philbrook/aws-packer-compute/aws-packer-compute"
-}
-
-publish_output "dev_packer_instance_profile_role_arn" {
-  value = upstream_input.aws_packer_compute.dev_packer_instance_profile_role_arn
-}
-
-publish_output "dev_packer_public_dns" {
-  value = upstream_input.aws_packer_compute.dev_packer_public_dns
-}
-
-publish_output "prod_packer_instance_profile_role_arn" {
-  value = upstream_input.aws_packer_compute.prod_packer_instance_profile_role_arn
-}
-
-publish_output "prod_packer_public_dns" {
-  value = upstream_input.aws_packer_compute.prod_packer_public_dns
-}

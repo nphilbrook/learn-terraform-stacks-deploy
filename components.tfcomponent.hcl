@@ -24,7 +24,6 @@ component "lambda" {
   inputs = {
     region    = var.regions
     bucket_id = component.s3[each.value].bucket_id
-    foo       = var.foo
   }
 
   providers = {
@@ -49,5 +48,17 @@ component "api_gateway" {
   providers = {
     aws    = provider.aws.configurations[each.value]
     random = provider.random.this
+  }
+}
+
+component "route53" {
+  source = "./r53"
+
+  inputs = {
+    public_dns_names = var.public_dns_names
+  }
+
+  providers = {
+    aws = provider.aws.configurations["us-east-1"]
   }
 }

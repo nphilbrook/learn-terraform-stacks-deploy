@@ -20,6 +20,6 @@ variable "default_tags" {
   default     = {}
 }
 
-variable "foo" {
-  type = string
+variable "public_dns_names" {
+  type = list(string)
 }
