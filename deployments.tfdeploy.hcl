@@ -7,7 +7,7 @@ identity_token "aws" {
 
 upstream_input "aws_packer_compute" {
   type   = "stack"
-  source = "app.terraform.io/philbrook/aws-packer-compute/aws-packer-compute"
+  source = "app.terraform.io/philbrook/aws-packer-compute/aws-asgard-packer-compute"
 }
 
 deployment "development" {
