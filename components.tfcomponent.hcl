@@ -56,7 +56,7 @@ component "route53" {
 
   inputs = {
     public_dns_names = var.public_dns_names
-    foo              = var.foo
+    # foo              = var.foo
   }
 
   providers = {

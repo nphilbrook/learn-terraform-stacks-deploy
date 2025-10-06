@@ -2,5 +2,5 @@
 # SPDX-License-Identifier: MPL-2.0
 
 output "foo" {
-  value = var.foo
+  value = "norf"
 }
