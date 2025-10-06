@@ -4,3 +4,7 @@
 variable "public_dns_names" {
   type = list(string)
 }
+
+variable "foo" {
+  type = string
+}

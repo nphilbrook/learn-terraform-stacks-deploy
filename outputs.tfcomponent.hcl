@@ -3,3 +3,8 @@ output "lambda_urls" {
   description = "URLs to invoke lambda functions"
   value       = [for x in component.lambda : x.invoke_arn]
 }
+
+output "foo" {
+  type  = string
+  value = component.route53.foo
+}
